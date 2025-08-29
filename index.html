@@ -1,1 +1,745 @@
-<h1>My page</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>SuKarne – COME FRESCO, COME BIEN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+  <link rel="icon" href="img/logocabeza.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #1a1a1a;
+      color: #fff;
+    }
+    /* HEADER */
+    .header-main {
+      background: #222;
+      width: 100%;
+      max-width: 100vw;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: center; /* Centramos todos los elementos */
+      gap: 34px;
+      padding: 16px 36px 0 36px;
+      min-height: 90px;
+      flex-wrap: wrap;
+    }
+    .header-social {
+      display: flex; gap: 14px; align-items: center;
+    }
+    .header-social a img { height: 22px; width: 22px; filter: brightness(90%); transition: filter 0.2s;}
+    .header-social a img:hover { filter: brightness(120%);}
+    .header-logo-box {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .header-logo { height: 48px; }
+    .header-55 { height: 40px; }
+    .header-servicio {
+      font-size: 1.07em; font-weight: bold; color: #fff;
+      text-align: center; min-width: 180px; line-height: 1.19;
+    }
+    .header-telefonos {
+      font-size: 1.13em; font-weight: 700; color: #fff;
+      min-width: 200px; text-align: left; line-height: 1.19;
+      letter-spacing: 0.01em;
+      text-align: center;
+    }
+    .header-telefonos .tel-usa { font-weight: 400; font-size: 0.95em; margin-left: 9px; }
+    .header-telefonos a { color: #fff; text-decoration: underline;}
+    .header-tienda {
+      background: #f0143b; color: #fff; border: none; border-radius: 16px;
+      font-size: 1.15em; font-weight: bold; padding: 13px 38px;
+      cursor: pointer; transition: background .2s; box-shadow: 0 3px 18px #0003;
+      letter-spacing: 0.01em; text-align: center; line-height: 1.18;
+      display: inline-block;
+    }
+    .header-tienda:hover { background: #b01630; }
+    .header-sello { height: 54px; }
+    nav.menu-principal {
+      margin: 0 auto; padding: 0; border: none; background: transparent;
+      width: 100%; position: relative; z-index: 20; display: flex;
+      flex-direction: column; align-items: center;
+    }
+    nav.menu-principal ul {
+      list-style: none; display: flex; gap: 26px; padding: 0; margin: 0;
+      width: 100%; justify-content: center; align-items: flex-end; font-size: 1.16em;
+    }
+    nav.menu-principal li {
+      position: relative; font-weight: bold; font-size: 1.07em; padding: 0;
+    }
+    nav.menu-principal a {
+      color: #fff; text-decoration: none; display: block; padding: 16px 0 10px 0;
+      transition: color .15s; font-weight: 700; border-bottom: 3px solid transparent;
+    }
+    nav.menu-principal li.active > a, nav.menu-principal a:hover {
+      color: #b01630; border-bottom: 3px solid #b01630;
+    }
+nav.menu-principal li ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #111;
+  padding: 0;
+  min-width: 240px; /* <-- aquí puedes subir a 240px o más */
+  z-index: 2;
+  border-radius: 0 0 7px 7px;
+}
+    nav.menu-principal li:hover > ul { display: block; }
+    nav.menu-principal li ul li { font-weight: 400; }
+    nav.menu-principal li ul a { padding: 12px 22px; }
+    @media (max-width: 1200px) {
+      .header-top { flex-wrap: wrap; gap: 18px; }
+      nav.menu-principal ul { gap: 13px; font-size: 1em; }
+      .header-logo-box { margin-right: 4px;}
+    }
+    @media (max-width: 900px) {
+      .header-top { flex-direction: column; align-items: center; gap: 10px;}
+      .header-logo { height: 36px;}
+      .header-55 { height: 27px;}
+      .header-sello { height: 33px;}
+      .header-tienda { padding: 10px 18px;}
+      nav.menu-principal ul { gap: 6px; font-size: 0.9em;}
+    }
+    @media (max-width: 700px) {
+      .header-main { border-radius: 0; }
+      nav.menu-principal ul { flex-wrap: wrap; }
+      .header-top { padding: 10px 6px 0 6px;}
+    }
+    /* SLIDER SWIPER */
+    .slider-home {
+      width: 100%; max-width: 100vw; height: 600px;
+      position: relative; margin: 0 auto 0 auto; padding: 0;
+      background: #181818;
+    }
+    .swiper { width: 100%; height: 100%; border-radius: 18px; overflow: hidden; }
+    .swiper-slide { width: 100%; height: 100%; background: #181818; }
+    .swiper-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .swiper-button-next, .swiper-button-prev {
+       font-size: 2.7em;
+       font-weight: 900;
+       text-shadow: 1px 0 #fff, -1px 0 #fff, 0 1px #fff, 0 -1px #fff;
+      color: #fff;
+      background: rgba(0,0,0,0.18);
+      border-radius: 50%;
+      width: 54px;
+      height: 54px;
+      top: 54%;
+      transform: translateY(-50%);
+    }
+    /* Overlay especial para el slide 13 */
+    .slider-overlay-13 {
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      z-index: 2;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      pointer-events: none;
+    }
+    .slider-overlay-13 .sukarne-logo {
+      position: absolute;
+      top: 28px;
+      left: 45px;
+      width: 230px;
+      filter: drop-shadow(0 5px 10px #0009);
+    }
+    .slider-overlay-13 .texto-caja {
+      background: #7b181c;
+      border-radius: 18px;
+      border: 2.5px solid #fff3;
+      color: #fff;
+      padding: 32px 36px 28px 36px;
+      margin-right: 80px;
+      max-width: 410px;
+      min-width: 330px;
+      box-shadow: 0 6px 28px #0005;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .slider-overlay-13 .texto-caja h3 {
+      margin: 0 0 12px 0;
+      font-size: 2.2em;
+      color: #b01630;
+      font-weight: 900;
+      background: #fff;
+      padding: 3px 24px;
+      border-radius: 5px;
+      display: inline-block;
+      letter-spacing: 1px;
+    }
+    .slider-overlay-13 .texto-caja p {
+      margin: 0;
+      font-size: 1.22em;
+      line-height: 1.22;
+      color: #fff;
+      font-weight: 400;
+    }
+    .slider-overlay-13 .texto-caja strong {
+      color: #fff;
+      font-weight: 700;
+    }
+    .slider-overlay-13 .texto-caja .num {
+      color: #fff;
+      font-weight: 900;
+      font-size: 1.3em;
+    }
+    @media (max-width: 900px) {
+      .slider-home { height: 220px;}
+      .slider-overlay-13 .sukarne-logo { width: 90px; left: 10px; top: 9px;}
+      .slider-overlay-13 .texto-caja { margin-right: 16px; min-width: 140px; padding: 10px 10px;}
+      .slider-overlay-13 .texto-caja h3 { font-size: 1em; padding: 2px 8px;}
+      .slider-overlay-13 .texto-caja p { font-size: 0.8em;}
+    }
+    /* SECCIÓN: 55 años + VIDEO */
+    .aniversario-video {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 56px 0 56px 0;
+      background: #181818;
+      gap: 0;
+    }
+    .aniversario-left, .aniversario-right {
+      width: 50%;
+    }
+    .aniversario-left {
+      padding-left: 5vw;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .aniversario-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-right: 5vw;
+    }
+    .video-wrap {
+      width: 100%;
+      max-width: 900px;
+      aspect-ratio: 16/9;
+      border-radius: 18px;
+      background: #000;
+      box-shadow: 0 4px 24px #0007;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 18px;
+      display: block;
+    }
+    .aniversario-left h1 {
+      font-size: 2.8em;
+      font-weight: 900;
+      margin-bottom: 0;
+    }
+    .aniversario-left h2 {
+      font-size: 2.2em;
+      font-weight: 700;
+      margin-bottom: 0.5em;
+    }
+    .aniversario-left p {
+      font-size: 1.2em;
+      margin-bottom: 1.5em;
+    }
+    .btn-vermas {
+      margin-top: 18px;
+      padding: 16px 38px;
+      background: #fff;
+      color: #b01630;
+      border-radius: 16px;
+      font-size: 1.18em;
+      font-weight: bold;
+      text-decoration: none;
+      border: none;
+      transition: background .17s, color .17s;
+      box-shadow: 0 2px 10px #0003;
+    }
+    .btn-vermas:hover { background: #b01630; color: #fff; }
+    .video-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 18px;
+    }
+    .video-unmute {
+      position: absolute; top: 19px; left: 22px; background: #222; color: #fff;
+      font-weight: 600; font-size: 1em; border: none; border-radius: 8px; padding: 7px 16px;
+      cursor: pointer; opacity: 0.93; z-index: 2; transition: background .14s;
+    }
+    .video-unmute:hover { background: #b01630; }
+    .video-logo {
+      position: absolute; top: 18px; right: 22px; width: 98px;
+      filter: drop-shadow(0 2px 12px #0006); z-index: 2; pointer-events: none;
+    }
+    @media (max-width: 900px) {
+      .aniversario-video {
+        flex-direction: column;
+        padding: 26px 0 26px 0;
+      }
+      .aniversario-left, .aniversario-right {
+        width: 100%;
+        max-width: none;
+        padding: 18px 6vw 0 6vw;
+        justify-content: center;
+        align-items: center;
+      }
+      .aniversario-left {
+        align-items: flex-start;
+      }
+      .video-wrap {
+        width: 100%;
+        min-width: 0;
+        max-width: 100vw;
+      }
+    }
+    /* WHATSAPP FLOTANTE */
+    .whatsapp {
+      position: fixed; right: 28px; bottom: 70px; z-index: 200;
+      background: none; box-shadow: none;
+      min-width: 330px; max-width: 430px;
+      display: flex; align-items: flex-end;
+    }
+    .whatsapp img {
+      width: 100%; max-width: 430px; min-width: 330px; min-height: 82px;
+      height: auto; display: block; border-radius: 18px;
+      background: none; box-shadow: 0 2px 18px #0003;
+    }
+    .wa-close {
+  position: absolute; 
+  top: 8px; 
+  right: 14px; 
+  background: none; 
+  border: none;
+  color: #fff; /* color blanco */
+  font-size: 2.1em; 
+  font-weight: 700; 
+  cursor: pointer; 
+  line-height: 1;
+  padding: 0 8px; 
+  transition: color 0.18s; 
+  z-index: 1;
+  text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000; /* contorno negro */
+}
+.wa-close:hover { 
+  color: #b01630; /* o el color que prefieras al pasar el mouse */
+}
+    @media (max-width: 700px) {
+      .whatsapp { min-width: 160px; max-width: 95vw; right: 6px; bottom: 6px;}
+      .whatsapp img { min-width: 160px; max-width: 95vw; }
+    }
+    /* Idioma flotante */
+    .lang-float {
+      position: fixed; left: 18px; bottom: 30px; z-index: 99;
+      background: #222; color: #fff; border-radius: 18px; padding: 7px 16px;
+      font-size: 1em; display: flex; align-items: center; gap: 8px;
+      box-shadow: 0 2px 12px #0003;
+    }
+    .lang-float img { height: 22px; }
+    /* FOOTER */
+  .footer-sk {
+  background: #181818;
+  color: #fff;
+  padding: 0 0 40px 0;
+  font-size: 1.12em;
+}
+.footer-contenido {
+  width: 98%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 38px;
+}
+.footer-col {
+  flex: 1 1 340px;
+  max-width: 420px;
+  min-width: 240px;
+  margin: 0 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1em;
+}
+.footer-img-txt {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
+  justify-content: flex-start;
+}
+.footer-img-txt img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0;
+  background: #222;
+  flex-shrink: 0;
+  align-self: flex-start;
+  box-shadow: 0 2px 12px #0005;
+}
+.footer-txt-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  min-width: 0;
+}
+.footer-title {
+  font-weight: 900;
+  font-size: 1.18em;
+  margin-bottom: 7px;
+  margin-top: 0;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.04em;
+  transition: color .17s;
+  display: inline-block;
+}
+.footer-link:hover { color: #b01630; text-decoration: underline;}
+.footer-activos {
+  color: #fff;
+  text-align: center;
+  margin: 32px 0 22px 0;
+  font-size: 1.15em;
+  font-weight: 500;
+}
+.footer-social-block {
+  text-align: center;
+  margin: 0 0 28px 0;
+}
+.footer-social-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 38px;
+  margin-top: 18px;
+  margin-bottom: 8px;
+}
+.footer-social-row a {
+  display: inline-block;
+  filter: brightness(0) invert(1);
+  transition: transform .2s, filter .2s;
+}
+.footer-social-row a:hover {
+  transform: scale(1.18);
+  filter: brightness(0) invert(0.7) sepia(1) hue-rotate(-35deg) saturate(8);
+}
+.footer-social-row img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+.footer-bottom {
+  color: #fff;
+  text-align: center;
+  margin-top: 16px;
+  font-size: 1.13em;
+  opacity: 0.92;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+@media (max-width: 1020px) {
+  .footer-contenido {
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+  .footer-col { max-width: none; min-width: 0; width: 100%; }
+  .footer-img-txt { justify-content: center; gap: 18px;}
+  .footer-img-txt img { margin: 0 0 18px 0;}
+  .footer-img-txt { flex-direction: column; align-items: center; gap: 0;}
+  .footer-txt-block { align-items: center; min-width: 0;}
+}
+    /* Botón subir */
+    .btn-subir {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      width: 50px;
+      height: 50px;
+      background: #b01630;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      box-shadow: 0 2px 10px #0006;
+      font-size: 2em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 120;
+      transition: background .18s;
+      opacity: 0.95;
+    }
+    .btn-subir:hover { background: #f0143b; }
+
+.footer-info-line {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 13px;
+  font-size: 1.08em;
+  color: #fff;
+  min-height: 56px;
+}
+.footer-icon-circle {
+  width: 20px;
+  height: 20px;
+  background: #111;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px #0004;
+}
+.footer-icon-circle img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: block;
+}
+.footer-txt-block > .footer-info-line span:last-child {
+  display: flex;
+  align-items: center;
+  font-size: 1.04em;
+  word-break: break-all;
+}
+@media (max-width: 900px) {
+  .footer-info-line { min-height: 38px; }
+}
+
+  </style>
+</head>
+<body>
+  <header class="header-main">
+    <div class="header-top">
+      <div class="header-social">
+        <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="img/instagram.png" alt="Instagram"></a>
+        <a href="#"><img src="img/x.png" alt="X"></a>
+        <a href="#"><img src="img/linkedin.png" alt="Linkedin"></a>
+      </div>
+      <div class="header-logo-box">
+        <img src="img/logo.png" class="header-logo" alt="SuKarne">
+      </div>
+      <div class="header-servicio">
+        Atención al cliente /<br>
+        Customer Service
+      </div>
+      <div class="header-telefonos">
+        MX <b>800 364 4444</b>
+        <span class="tel-usa">US <a href="#" style="color:#fff;">For English Click Here</a></span>
+      </div>
+      <button class="header-tienda">Tienda SuKarne</button>
+      <img src="img/100_libre.png" class="header-sello" alt="Sello confianza">
+    </div>
+    <nav class="menu-principal">
+      <ul>
+        <li class="active"><a href="#">Inicio</a></li>
+        <li><a href="#">Clientes</a></li>
+        <li><a href="#">Proveedores</a></li>
+        <li><a href="#">Localiza tu Tienda</a></li>
+        <li><a href="#">Catálogo de Productos</a></li>
+        <li>
+          <a href="#">Quiénes somos ▼</a>
+          <ul>
+            <li><a href="#">Misión y Visión</a></li>
+            <li><a href="#">Infraestructura</a></li>
+            <li><a href="#">Política de calidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Valores ▼</a>
+          <ul>
+            <li><a href="#">Inocuidad</a></li>
+            <li><a href="#">Sustentabilidad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Empresas ▼</a>
+          <ul>
+            <li><a href="#">Fundación Vizcarra</a></li>
+            <li><a href="#">Salud Digna</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Contacto</a></li>
+        <li><a href="#">EmpleoSK</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <br>
+
+  <!-- SLIDER SWIPER -->
+  <div class="slider-home">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <!-- Slides 1 a 12 solo imagen -->
+        <div class="swiper-slide"><img src="img/slider1.png" alt=""></div>
+        <div class="swiper-slide"><img src="img/slider2.png" alt=""></div>
+        <div class="swiper-slide"><img src="img/slider3.png" alt=""></div>
+        <div class="swiper-slide"><img src="img/slider4.png" alt=""></div>
+        <div class="swiper-slide"><img src="img/slider5.png" alt=""></div>
+        <div class="swiper-slide"><img src="img/slider6.png" alt=""></div>
+        <div class="swiper-slide"><img src="img/slider7.png" alt=""></div>
+        <div class="swiper-slide"><img src="img/slider8.png" alt=""></div>
+        <div class="swiper-slide"><img src="img/slider9.png" alt=""></div>
+        <div class="swiper-slide"><img src="img/slider10.png" alt=""></div>
+        <div class="swiper-slide"><img src="img/slider11.png" alt=""></div>
+        <div class="swiper-slide"><img src="img/slider12.png" alt=""></div>
+        <div class="swiper-slide"><img src="img/slider13.png" alt=""></div>
+        <div class="swiper-slide"><img src="img/slider14.png" alt=""></div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </div>
+  <!-- SECCIÓN: 55 años + VIDEO -->
+ <section class="aniversario-video">
+  <div class="aniversario-left">
+    <h1>55 años</h1>
+    <h2>Gracias a ti</h2>
+    <p>Somos una gran familia comprometida con nutrir al mundo ¡Somos SuKarne!</p>
+    <a href="#" class="btn-vermas">Ver más...</a>
+  </div>
+  <div class="aniversario-right">
+    <div class="video-wrap">
+      <video
+        src="img/gracias.mp4"
+        controls
+        muted
+        preload="metadata"
+        style="width:100%;border-radius:18px;background:#000;"
+      ></video>
+    </div>
+  </div>
+</section>
+  <!-- WhatsApp Flotante -->
+  <div class="whatsapp" id="whatsapp-bubble">
+    <a href="https://wa.me/528118808206" target="_blank" rel="noopener" title="Chatea con Toribio en WhatsApp">
+      <img src="img/whatsapp.png" alt="¿Necesitas ayuda? Toribio está aquí para ayudarte">
+    </a>
+    <button class="wa-close" onclick="document.getElementById('whatsapp-bubble').style.display='none';" title="Cerrar">&times;</button>
+  </div>
+  <!-- Idioma flotante -->
+  <div class="lang-float">
+    <img src="img/es_MX.png" alt="ES_MX"> ES_MX
+  </div>
+  <!-- FOOTER -->
+<footer class="footer-sk">
+  <div style="text-align:center; font-size:1.3em; margin-top: 18px; margin-bottom: 32px;">
+    <a href="#" style="color:#fff; text-decoration:none;">Subir al menú ^</a>
+  </div>
+  <div class="footer-contenido">
+    <!-- Columna 1: Contáctanos -->
+    <div class="footer-col">
+      <div class="footer-img-txt">
+        <img src="img/corporativo.png" alt="Corporativo SuKarne">
+        <div class="footer-txt-block">
+          <div class="footer-title">Contáctanos</div>
+          <div class="footer-info-line">
+            <span class="footer-icon-circle">
+              <img src="img/phone.png" alt="Teléfono">
+            </span>
+            <span>+52 (667) 759.26.00</span>
+          </div>
+          <div class="footer-info-line">
+            <span class="footer-icon-circle">
+              <img src="img/location.jpg" alt="Teléfono">
+            </span>
+            <span> Diana Tang, # 59-A
+              Desarrollo Urbano La Primavera Culiacán,
+            Sinaloa, México. C.P 80300 </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Columna 2: Enlaces -->
+    <div class="footer-col">
+      <div class="footer-img-txt">
+        <img src="img/tienda.png" alt="Tienda SuKarne">
+        <div class="footer-txt-block">
+          <div class="footer-title">Enlaces</div>
+          <div><a href="#" class="footer-link">Aviso Legal</a></div>
+          <div><a href="#" class="footer-link">Aviso de Privacidad</a></div>
+          <div><a href="#" class="footer-link">Política de Reclamos</a></div>
+        </div>
+      </div>
+    </div>
+    <!-- Columna 3: Atención a clientes -->
+    <div class="footer-col">
+      <div class="footer-img-txt">
+        <img src="img/atencionacliente.png" alt="Atención a Clientes">
+        <div class="footer-txt-block">
+          <div class="footer-title">Atención a clientes</div>
+          <div class="footer-info-line">
+            <span class="footer-icon-circle">
+              <img src="img/phone.png" alt="Teléfono">
+            </span>
+            <span>800 364 4444</span>
+          </div>
+          <div class="footer-info-line">
+            <span class="footer-icon-circle">
+              <img src="img/mail.png" alt="Correo">
+            </span>
+            <span>
+              <a href="mailto:servicioaclientes@sukarne.com" class="footer-link">
+                servicioaclientes@sukarne.com
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+  <button class="btn-subir" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Subir">
+    &#8679;
+  </button>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper', {
+      loop: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+      },
+      effect: 'slide',
+      allowTouchMove: true,
+    });
+  </script>
+</body>
+</html>
